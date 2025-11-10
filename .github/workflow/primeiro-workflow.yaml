@@ -1,9 +1,10 @@
 name: Devops Workflow
+
 on:
   push:
     branches:
       - main
- 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,5 +14,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Mostrar mensagem no console
-        run: echo "Olá, este é o meu primeiro workflow de DevOps!"
-        
+        run: echo "Olá, este é o meu primeiro workflow de DevOps!!"
