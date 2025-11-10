@@ -15,3 +15,49 @@ jobs:
 
       - name: Mostrar mensagem no console
         run: echo "Olá, este é o meu primeiro workflow de DevOps!!"
+
+dev:
+  runs-on: ubuntu-latest
+  needs: build
+
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Exibir conteúdo do arquivo teste.txt
+      run: cat teste/teste.txt
+
+qa:
+  runs-on: ubuntu-latest
+  needs: build
+
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Exibir conteúdo do arquivo teste.txt
+      run: cat teste/teste.txt
+
+homolog:
+  runs-on: ubuntu-latest
+  needs: 
+    dev
+    qa
+
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Exibir conteúdo do arquivo teste.txt
+      run: cat teste/teste.txt
+
+prod:
+  runs-on: ubuntu-latest
+  needs: homolog
+
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Exibir conteúdo do arquivo teste.txt
+      run: cat teste/teste.txt
